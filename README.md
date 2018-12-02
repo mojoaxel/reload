@@ -210,6 +210,7 @@ Options:
   -e, --exts [extensions]        Extensions separated by commas or pipes. Defaults to html,js,css.
   -p, --port [port]              The port to bind to. Can be set with PORT env variable as well. Defaults to 8080
   -s, --start-page [start-page]  Specify a start page. Defaults to index.html
+  -i, --poll-interval [interval] How often to poll watched files for changes.  Defaults to Node default.
   -v, --verbose [verbose]        Turning on logging on the server and client side. Defaults to false
 
 ```
