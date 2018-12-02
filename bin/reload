@@ -31,8 +31,23 @@ if (typeof program.watchDir === 'undefined') {
   program.watchDir = program.dir
 }
 
-var args = ['-e', program.exts, '-w', program.watchDir, (program.pollInterval ? '-p' + program.pollInterval : ''), '-q', '--', serverFile, program.port, program.dir, !!program.browser, program.hostname, runFile, program.startPage, program.fallback, program.verbose]
-supervisor.run(args)
+var supervisorArgs = [
+  '-e', program.exts,
+  '-w', program.watchDir,
+  '-p', (program.pollInterval ? program.pollInterval : ''),
+  '-q'
+]
+var reloadArgs = [
+  program.port,
+  program.dir,
+  !!program.browser,
+  program.hostname,
+  runFile,
+  program.startPage,
+  program.fallback,
+  program.verbose
+]
+supervisor.run(supervisorArgs.concat(['--', serverFile]).concat(reloadArgs))
 
 console.log('\nReload web server:')
 console.log('listening on port ' + clc.blue.bold(program.port))
